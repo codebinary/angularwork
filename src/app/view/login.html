@@ -1,0 +1,35 @@
+
+<div class="col-md-12">
+	
+	<h1>{{ titulo }}</h1>
+	<hr>
+	<!-- Le damos un nombre al fomulario asi #loginForm y va pertenecer a un formulario de angular
+	"ngForm", y cuando se lance el evento submit lance la funcion el método onSubmit-->
+	
+	<form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-4">
+	
+		<div class="form-group">
+			<label for="">Email:</label>
+			<input 	#email="ngModel" 
+					[(ngModel)]="user.email" 
+					ngControl="email"
+					name="email" type="email" class="form-control" required>
+			<span *ngIf="!email.valid">El email es obligatorio</span>
+		</div>
+
+		<div class="form-group">
+			<label for="">Contraseña:</label>
+			<input 	#password="ngModel" 
+					[(ngModel)]="user.password" 
+					ngControl="password"
+					name="password" type="password" class="form-control" required>
+			<span *ngIf="!password.valid">El password es obligatorio</span>
+		</div>
+	
+		
+	
+		<input type="submit" value="Enviar" class="btn btn-primary">
+	</form>
+
+
+</div>
