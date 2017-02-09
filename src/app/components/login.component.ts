@@ -38,6 +38,10 @@ export class LoginComponent implements OnInit {
 			"gethash": "false"
 		};
 
+		let identity = this.loginService.getIdentity();
+		let token = this.loginService.getToken();
+
+
 	}
 
 		onSubmit(){
@@ -54,12 +58,12 @@ export class LoginComponent implements OnInit {
 					}else{
 						if(!this.identity.status){
 							localStorage.setItem('identity', JSON.stringify(identity));
-
 							//GET TOKEN
 							this.user.gethash = "true";
 							this.loginService.signup(this.user).subscribe(
 								response => {
 									let token = response;
+									console.log(response);
 									this.token = token;
 
 									if(this.token.length <= 0){
@@ -69,7 +73,7 @@ export class LoginComponent implements OnInit {
 											localStorage.setItem('token', token);
 
 											//REDIRECCIÓN
-											window.location.href = "/";
+											//window.location.href = "/";
 										}
 									}
 								},
