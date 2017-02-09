@@ -1,7 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'default',
-  template: `<h1>default</h1>`,
+  templateUrl: 'app/view/default.html',
+  providers: [LoginService]
 })
-export class DefaultComponent  { }
+export class DefaultComponent  { 
+
+	public titulo = "Portada";
+	public identity;
+
+
+	constructor(private loginService: LoginService){}
+
+	ngOnInit(){
+		this.identity = this.loginService.getIdentity();
+	}
+
+}

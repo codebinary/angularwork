@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
+
 //Importamos los services
 import { LoginService } from '../services/login.service';
 
@@ -31,6 +32,23 @@ export class LoginComponent implements OnInit {
 	){}
 
 	ngOnInit(){
+
+		//Recogemos el parámetro por url para realizar el logout
+		this.route.params.subscribe(
+			params => {
+				//Con el mas adelante lo convierte en entero
+				let logout = +params["id"];
+				if(logout == 1){
+					localStorage.removeItem('identity');
+					localStorage.removeItem('token');
+					this.identity = null;
+					this.token = null;
+
+					window.location.href = "/login";
+					//this.router.navigate(["/index"]);
+				}
+			}
+		);
 		//alert(this._loginService.signup())
 		this.user = {
 			"email": "",

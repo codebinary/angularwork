@@ -9,6 +9,7 @@ import { DefaultComponent } from './components/default.component';
 const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'login',  component: LoginComponent },
+  { path: 'login/:id',  component: LoginComponent },
   { path: 'register',  component: RegisterComponent },
   { path: 'index',  component: DefaultComponent }
 ];

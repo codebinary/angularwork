@@ -6,6 +6,15 @@
 	<!-- Le damos un nombre al fomulario asi #loginForm y va pertenecer a un formulario de angular
 	"ngForm", y cuando se lance el evento submit lance la funcion el método onSubmit-->
 	
+	<div class="identity-data" *ngIf="identity">
+		<div class="user-identity alert alert-success" *ngIf="identity.email">
+			Bienvenido {{identity.name}}
+		</div>
+		<div class="user-identity alert alert-danger" *ngIf="identity.data">
+			{{identity.data}}
+		</div>
+	</div>
+
 	<form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-4">
 	
 		<div class="form-group">
