@@ -1,0 +1,60 @@
+
+<div class="col-md-12">
+	
+	<h1>{{ titulo }}</h1>
+	<hr>
+	
+	<div class="alert alert-success" *ngIf="status == 'success'">
+		Te has registrado correctamente, ahora puedes identificarte
+		<a [routerLink]="['/login']">pinchando aqui...</a>
+	</div>
+	
+	<div class="alert alert-error" *ngIf="status == 'error'">
+		No ha sido posible registrarte en la plataforma, intentalo más tarde.
+	</div>
+
+	<form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-4">
+	
+		<div class="form-group">
+			<label for="">Nombre:</label>
+			<input 	#name="ngModel" 
+					[(ngModel)]="user.name" 
+					ngControl="name"
+					name="name" type="name" class="form-control" required>
+			<span *ngIf="!name.valid && name.touched">El Nombre es obligatorio</span>
+		</div>
+
+		<div class="form-group">
+			<label for="">Apellidos:</label>
+			<input 	#surname="ngModel" 
+					[(ngModel)]="user.surname" 
+					ngControl="surname"
+					name="surname" type="surname" class="form-control" required>
+			<span *ngIf="!surname.valid && surname.touched">El apellidos es obligatorio</span>
+		</div>
+
+		<div class="form-group">
+			<label for="">Email:</label>
+			<input 	#email="ngModel" 
+					[(ngModel)]="user.email" 
+					ngControl="email"
+					name="email" type="email" class="form-control" required>
+			<span *ngIf="!email.valid && email.touched">El email es obligatorio</span>
+		</div>
+
+		<div class="form-group">
+			<label for="">Contraseña:</label>
+			<input 	#password="ngModel" 
+					[(ngModel)]="user.password" 
+					ngControl="password"
+					name="password" type="password" class="form-control" required>
+			<span *ngIf="!password.valid && password.touched">El password es obligatorio</span>
+		</div>
+	
+		
+	
+		<input type="submit" value="Enviar" class="btn btn-primary">
+	</form>
+
+
+</div>

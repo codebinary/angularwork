@@ -57,7 +57,11 @@ export class LoginComponent implements OnInit {
 		};
 
 		let identity = this.loginService.getIdentity();
-		let token = this.loginService.getToken();
+		//Si existe el id del usuario
+		if(identity != null && identity.sub){
+			this.router.navigate(["/index"]);
+			console.log("entr");
+		}
 
 
 	}
@@ -91,7 +95,7 @@ export class LoginComponent implements OnInit {
 											localStorage.setItem('token', token);
 
 											//REDIRECCIÓN
-											//window.location.href = "/";
+											window.location.href = "/";
 										}
 									}
 								},

@@ -23,7 +23,7 @@
 					[(ngModel)]="user.email" 
 					ngControl="email"
 					name="email" type="email" class="form-control" required>
-			<span *ngIf="!email.valid">El email es obligatorio</span>
+			<span *ngIf="!email.valid && email.touched">El email es obligatorio</span>
 		</div>
 
 		<div class="form-group">
@@ -32,7 +32,7 @@
 					[(ngModel)]="user.password" 
 					ngControl="password"
 					name="password" type="password" class="form-control" required>
-			<span *ngIf="!password.valid">El password es obligatorio</span>
+			<span *ngIf="!password.valid && password.touched">El password es obligatorio</span>
 		</div>
 	
 		
